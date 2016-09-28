@@ -1,0 +1,15 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime
+@{
+	ICMSElement comp = Model.Element("FeatureItem");
+}
+
+
+<div class="service" @_Helpers.RenderICEAttribute(Model)>
+	<i class="@comp.Element("IconClass").Value service-icon"></i>
+	<div class="desc">
+		<h4>@comp.Element("Title").Value</h4>
+		<p>@comp.Element("Body").Value</p>
+	</div>
+</div>
+

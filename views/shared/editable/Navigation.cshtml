@@ -1,0 +1,17 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime
+
+@{
+    
+    var nav = Model;
+}
+
+<div>
+<h2>@nav.Attribute("label").Value</h2>
+<ul @_Helpers.RenderICEAttribute(nav)>
+    @foreach(var item in Model.Descendants("Page"))
+    {
+        <li><a href="@item.GetAttributeValue("URL")">@item.GetAttributeValue("Name")</a></li>
+    }
+</ul>
+</div>

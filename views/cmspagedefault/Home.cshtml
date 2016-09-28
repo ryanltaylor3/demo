@@ -1,0 +1,107 @@
+﻿@model Ingeniux.Runtime.CMSPageRequest
+@using Ingeniux.Runtime
+@using System.Data.SqlClient;
+
+@{
+}
+
+@Html.Partial("Components/ThemeToolbox")
+
+<!--=== Top ===-->
+<div class="top">
+	<div class="container">
+		<ul class="loginbar pull-right">
+			<li>
+				<i class="icon-globe"></i>
+				<a>Languages</a>
+				<ul class="lenguages">
+					<li class="active">
+						<a href="#">English <i class="icon-ok"></i></a>
+					</li>
+					<li><a href="#">Spanish</a></li>
+					<li><a href="#">Russian</a></li>
+					<li><a href="#">German</a></li>
+				</ul>
+			</li>
+			<li class="devider"></li>
+			<li><a href="page_faq.html">Help</a></li>
+	</div>
+</div>
+<!--/top-->
+<!--=== End Top ===-->
+
+@Html.Partial("Components/Header", Model.Element("SiteControl"))
+<div id="contentContainer">
+
+
+
+	<!--=== Purchase Block ===-->
+	<div class="purchase">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					@Html.Partial("Editable/Title", Model.Element("Title"))
+					@Html.Partial("Editable/BodyCopy", Model.Element("BodyCopy"))
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/row-->
+	<!-- End Purchase Block -->
+
+
+</div>
+
+@Html.Partial("Components/Footer", Model.Element("SiteControl"));
+
+
+
+	<!-- JS Global Compulsory -->
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/hover-dropdown.min.js"></script>
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/back-to-top.js"></script>
+	<!-- JS Implementing Plugins -->
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/flexslider/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/horizontal-parallax/js/sequence.jquery-min.js"></script>
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/horizontal-parallax/js/horizontal-parallax.js"></script>
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/bxslider/jquery.bxslider.js"></script>
+
+	<!-- JS Page Level -->
+	<script type="text/javascript" src="@Url.Content("~/prebuilt/")js/app.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function () {
+			App.init();
+			App.initSliders();
+			App.initBxSlider();
+		});
+	</script>
+
+
+@section Head {
+	    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- CSS Global Compulsory-->
+	<link rel="stylesheet" href="bootstrap3/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap3/css/pagebuilder.css">
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/style.css">
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/headers/header1.css">
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")plugins/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/responsive.css">
+    <link rel="shortcut icon" href="favicon.ico">        
+    <!-- CSS Implementing Plugins -->    
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")plugins/flexslider/flexslider.css" type="text/css" media="screen"> 
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")plugins/bxslider/jquery.bxslider.css">             
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")plugins/horizontal-parallax/css/horizontal-parallax.css">
+    <!-- CSS Page Style -->    
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/pages/page_promo.css">
+    <!-- CSS Theme -->    
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/themes/default.css" id="style_color">
+    <link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/themes/headers/header1-blue.css" id="style_color-header-1">  
+}

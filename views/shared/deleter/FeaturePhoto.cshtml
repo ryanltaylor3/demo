@@ -1,0 +1,27 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime;
+
+@{
+	var comp = Model.Element("FeaturePhoto");
+	var link = comp.Element("Page");
+	string linkText = link
+		.ToNullHelper()
+		.Propagate(
+			l => l.Value)
+		.Return("Read More");
+	string url = link
+		.ToNullHelper()
+		.Propagate(
+			l => l.GetAttributeValue("URL"))
+		.Return("#");		
+}
+<div class="view view-tenth" @_Helpers.RenderICEAttribute(Model)>
+	<img class="img-responsive" src="@Url.Content("~/images/")@comp.GetElementValue("Photo")" alt="" />
+	<div class="mask">
+		<h2>@comp.GetElementValue("Title")</h2>
+		<p>@comp.GetElementValue("Description")</p>
+		<a href="@url" class="info">@linkText</a>
+	</div>
+	<link rel="stylesheet" href="prebuilt/css/pages/portfolio-v1.css">
+</div>
+

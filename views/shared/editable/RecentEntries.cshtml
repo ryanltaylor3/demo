@@ -1,0 +1,36 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+
+@{ 
+	var comp = Model.Element("RecentEntries");
+	int i = 0; 
+}
+
+<div @_Helpers.RenderICEAttribute(Model)>
+
+	<div class="headline">
+		<h2>@comp.GetElementValue("Title")</h2>
+	</div>
+	<div id="myCarousel" class="carousel slide carousel-v1">
+		<div class="carousel-inner">
+			@foreach (var item in comp.Elements("Image"))
+   {
+	   string firstItemClass = i == 0 ? "active" : "";
+				<div class="item @firstItemClass">
+					<img src="@Url.Content("~/images/")@item.Value" alt="">
+					<div class="carousel-caption">
+						<p>@item.GetAttributeValue("AlternateText")</p>
+					</div>
+				</div>
+	   i++;
+   }
+		</div>
+		<div class="carousel-arrow">
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<i class="icon-angle-left"></i>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<i class="icon-angle-right"></i>
+			</a>
+		</div>
+	</div>
+</div>

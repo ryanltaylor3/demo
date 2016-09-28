@@ -1,0 +1,132 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime
+
+
+
+<!--=== Footer ===-->
+<div class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 md-margin-bottom-40">
+				<!-- About -->
+				@{
+					var aboutComp = Model.Element("TitledContentBlock");
+					if (aboutComp != null)
+					{
+					<div class="headline">
+						<h2>@aboutComp.GetElementValue("Title")</h2>
+					</div>
+					<p class="margin-bottom-25 md-margin-bottom-40">@Html.Raw(aboutComp.GetElementValue("Content"))</p>						
+					}
+				}
+
+
+				<!-- Monthly Newsletter -->
+				<div class="headline">
+					<h2>Monthly Newsletter</h2>
+				</div>
+				<p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
+				<form class="footer-subsribe">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Email Address">
+						<span class="input-group-btn">
+							<button class="btn-u" type="button">Subscribe</button>
+						</span>
+					</div>
+					<!-- /input-group -->
+				</form>
+			</div>
+			<!--/col-md-4-->
+
+			<div class="col-md-4 md-margin-bottom-40">
+				@{
+					var postsComp = Model.Element("RecentEntries");
+					if (postsComp != null)
+					{
+					<div class="posts">
+						<div class="headline">
+							<h2>@postsComp.GetElementValue("Title")</h2>
+						</div>
+						@foreach (var item in postsComp.Elements("Image"))
+	  {
+							<dl class="dl-horizontal">
+								<dt><a href="#">
+									<img src="@Url.Content("~/images/" + @item.Value)" alt="" /></a></dt>
+								<dd>
+									<p><a href="#">@item.GetAttributeValue("AlternateText")</a></p>
+								</dd>
+							</dl>
+	  }
+					</div>						
+					}
+				}
+
+			</div>
+			<!--/col-md-4-->
+
+			<div class="col-md-4">
+				<!-- Monthly Newsletter -->
+
+				@{
+					var contactUsComp = Model.Element("ContactInformation");
+					if (contactUsComp != null)
+					{
+					<div class="headline">
+						<h2>@contactUsComp.GetElementValue("Title")</h2>
+					</div>
+					<address class="md-margin-bottom-40">
+						@contactUsComp.GetElementValue("Company")
+					<br />
+						@contactUsComp.GetElementValue("Address")
+					<br />
+						Phone: @contactUsComp.GetElementValue("Phone")
+					<br />
+						Email: <a href="mailto:@contactUsComp.GetElementValue("Email")" class="">@contactUsComp.GetElementValue("Email")</a>
+					<br />
+						Web: <a href="@contactUsComp.GetElementValue("Web")" class="">@contactUsComp.GetElementValue("Web")</a>
+					</address>						
+					}
+				}
+
+
+				<!-- Stay Connected -->
+				<div class="headline">
+					<h2>Stay Connected</h2>
+				</div>
+				<ul class="social-icons">
+					<li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
+					<li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
+					<li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
+					<li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
+					<li><a href="#" data-original-title="Pinterest" class="social_pintrest"></a></li>
+					<li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
+					<li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
+				</ul>
+			</div>
+			<!--/col-md-4-->
+		</div>
+		<!--/row-->
+	</div>
+	<!--/container-->
+</div>
+<!--/footer-->
+<!--=== End Footer ===-->
+
+<!--=== Copyright ===-->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<p class="copyright-space">
+					2013 &copy; Ingeniux Corporation. ALL Rights Reserved. 
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+				</p>
+			</div>
+		</div>
+		<!--/row-->
+	</div>
+	<!--/container-->
+</div>
+<!--/copyright-->
+<!--=== End Copyright ===-->
+

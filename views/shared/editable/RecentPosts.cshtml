@@ -1,0 +1,23 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime
+
+@{
+	var comp = Model.Element("RecentEntries");
+}
+
+<div class="posts margin-bottom-30" @_Helpers.RenderICEAttribute(Model)>
+	<div class="headline">
+		<h2>@comp.GetElementValue("Title")</h2>
+	</div>
+	@foreach (var item in comp.Elements("Image"))
+ {
+	<dl class="dl-horizontal">
+		<dt><a href="#">
+			<img src="@Url.Content("~/images/")@item.Value" alt="" /></a></dt>
+		<dd>
+			<p><a href="#">@item.GetAttributeValue("AlternateText")</a></p>
+		</dd>
+	</dl>	 
+ }
+</div>
+

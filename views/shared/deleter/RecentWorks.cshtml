@@ -1,0 +1,32 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+
+@{
+	var comp = Model.Element("RecentWorks");
+}
+
+<div @_Helpers.RenderICEAttribute(Model)>
+	<div class="headline">
+		<h2>@comp.Element("Title").Value</h2>
+	</div>
+	<ul class="bxslider recent-work">
+		@{
+			foreach (var ele in comp.Elements("SliderFrame"))
+			{
+				string topic = ele.GetElementValue("Topic");
+				string msg = ele.GetElementValue("Message");
+				string img = ele.GetElementValue("FeaturedImage");
+			<li>
+				<a href="#">
+					<em class="overflow-hidden">
+						<img src="@Url.Content("~/images/")@img" alt="" /></em>
+					<span>
+						<strong>@topic</strong>
+						<i>@msg</i>
+					</span>
+				</a>
+			</li>				
+			}
+		}
+	</ul>
+</div>
+

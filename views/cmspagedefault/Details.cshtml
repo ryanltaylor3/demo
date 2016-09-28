@@ -1,0 +1,112 @@
+﻿@model Ingeniux.Runtime.CMSPageRequest
+@using Ingeniux.Runtime
+
+@{
+	var siteControl = Model.Element("SiteControl");
+}
+
+@Html.Partial("Components/ThemeToolbox")
+
+<!--=== Top ===-->
+<div class="top">
+	<div class="container">
+		<ul class="loginbar pull-right">
+			<li>
+				<i class="icon-globe"></i>
+				<a>Languages</a>
+				<ul class="lenguages">
+					<li class="active">
+						<a href="#">English <i class="icon-ok"></i></a>
+					</li>
+					<li><a href="#">Spanish</a></li>
+					<li><a href="#">Russian</a></li>
+					<li><a href="#">German</a></li>
+				</ul>
+			</li>
+			<li class="devider"></li>
+			<li><a href="page_faq.html">Help</a></li>
+			<li class="devider"></li>
+			<li><a href="page_login.html">Login</a></li>
+		</ul>
+	</div>
+</div>
+<!--/top-->
+<!--=== End Top ===-->
+
+@Html.Partial("Components/Header", siteControl)
+
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+	<div class="container">
+		@{
+			var titleEle = Model.Element("Title");
+			titleEle.Tag = "pull-left";
+		}
+		
+
+
+		<ul class="breadcrumb">
+			@foreach (var item in Model.Elements("Navigation")				
+				.FirstOrDefault(
+					nav => nav.GetAttributeValue("Name") == "AncestorNavigation")
+				.Elements("Page")
+				.Where(
+					item => item.GetAttributeValue("Schema") != "Folder"))
+   {
+				<li><a href="@item.GetAttributeValue("URL")">@item.GetAttributeValue("Name")</a></li>
+   }
+
+		</ul>
+	</div>
+</div>
+<!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->  
+<div class="container" id="contentContainer">
+	<div class="row-fluid privacy">@Html.Raw(Model.GetElementValue("BodyCopy"))</div>
+	<!--/row-fluid-->
+</div>
+<!--/container-->
+<!--=== End Content Part ===-->
+
+@Html.Partial("Components/Footer", siteControl);
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/hover-dropdown.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/prebuilt/")plugins/back-to-top.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="@Url.Content("~/prebuilt/")js/app.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function () {
+		App.init();
+	});
+</script>
+<!--[if lt IE 9]>
+    <script src="@Url.Content("~/prebuilt/")plugins/respond.js"></script>
+<![endif]-->
+
+@section Head {
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- CSS Global Compulsory-->
+	<link rel="stylesheet" href="bootstrap3/css/bootstrap.css">
+	<link rel="stylesheet" href="bootstrap3/css/pagebuilder.css">
+	<link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/style.css">
+	<link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/headers/header1.css">
+	<link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/responsive.css">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- CSS Implementing Plugins -->
+	<link rel="stylesheet" href="@Url.Content("~/prebuilt/")plugins/font-awesome/css/font-awesome.css">
+
+	<!-- CSS Theme -->
+	<link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/themes/default.css" id="style_color">
+	<link rel="stylesheet" href="@Url.Content("~/prebuilt/")css/themes/headers/default.css" id="style_color-header-1">
+}

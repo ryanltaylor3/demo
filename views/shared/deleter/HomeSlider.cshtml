@@ -1,0 +1,42 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime;
+
+@{
+	
+	ICMSElement component = @Model.Element("HomeSlider");
+	string prevButtonImg = component.Element("PreviousButton").Value;
+	string nextButtonImg = component.Element("NextButton").Value;
+}
+<div @_Helpers.RenderICEAttribute(Model)>
+	<div id="sequence-theme" class="sequence-inner" >
+		<div id="sequence">
+			<img class="prev" src="@prevButtonImg" alt="Previous" />
+			<img class="next" src="@nextButtonImg" alt="Next" />
+			<ul>
+				@{
+					var sliderFrames = component.Elements("SliderFrame");
+					var i = 0;
+					foreach (var sf in sliderFrames)
+					{
+						string leadClass = i == 0 ? "animate-in" : "";
+						ICMSElement fImage = sf.Element("FeaturedImage");
+
+						string className = fImage.Value.SubstringBefore(".", true, false).SubstringAfter("/", true, false);
+						
+						i++;
+						
+					<li class="@leadClass">
+						<div class="info">
+							<h2>@sf.Element("Topic").Value</h2>
+							<p>@sf.Element("Message").Value</p>
+						</div>
+						<img class="@className" src="@Url.Content("~/images/")@fImage.Value" alt="@fImage.GetAttributeValue("AlternateText")" />
+					</li>					
+					}
+				}
+			</ul>
+		</div>
+	</div>
+</div>
+
+

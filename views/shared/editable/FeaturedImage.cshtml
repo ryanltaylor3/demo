@@ -1,0 +1,4 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+
+<img style="max-width:100%;"   @_Helpers.RenderICEAttribute(Model) src="@Url.Content("~/images/")@Model.Value" alt="@Model.GetAttributeValue("AltText")" />
+

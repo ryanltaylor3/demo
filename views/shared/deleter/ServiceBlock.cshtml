@@ -1,0 +1,15 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime
+
+@{
+	var comp = Model.Element("ServiceBlock");
+}
+
+<div @_Helpers.RenderICEAttribute(Model) class="servive-block-in servive-block-colored @comp.GetElementValue("BlockClass")">
+	<h4>@comp.GetElementValue("Title")</h4>
+	<div><i class="@comp.GetElementValue("IconClass")"></i></div>
+	<p>@comp.GetElementValue("Summary")</p>
+</div>
+
+
+

@@ -1,0 +1,15 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime
+
+@{
+	var comp = Model.Element("TitledContentBlock");
+}
+
+<div class="margin-bottom-30" @_Helpers.RenderICEAttribute(Model)>
+	<div class="headline">
+		<h2>@comp.GetElementValue("Title")</h2>
+	</div>
+	<p>
+		@Html.Raw(comp.GetElementValue("Content"))
+	</p>
+</div>

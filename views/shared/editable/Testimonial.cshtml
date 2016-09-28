@@ -1,0 +1,25 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+
+@{
+	var comp = Model.Element("Testimonial");
+}
+
+
+<div @_Helpers.RenderICEAttribute(Model)>
+	<div class="headline">
+		<h2>@comp.GetElementValue("Title")</h2>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			<img class="img-responsive margin-bottom-20" src="@Url.Content("~/images/")@comp.GetElementValue("Image")" alt="" />
+		</div>
+		<div class="col-sm-8">
+			<p>@Html.Raw(comp.GetElementValue("Copy"))</p>
+		</div>
+	</div>
+
+	<blockquote class="hero-unify">
+		<p>@comp.GetElementValue("Quote")</p>
+		<small>@comp.GetElementValue("QuoteAuthro")</small>
+	</blockquote>
+</div>

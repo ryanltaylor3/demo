@@ -1,0 +1,22 @@
+﻿@model Ingeniux.Runtime.CMSPageRequest
+@using Ingeniux.Runtime
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>Ingeniux Deploy | @Model.GetElementValue("Title")</title>
+
+	@if (!Model.IsPreview)
+ {
+	 <base href="@Model.Element("SiteControl").GetElementValue("BaseUrl")">
+ }
+
+	@RenderSection("Head")
+</head> 
+
+<body>
+	@RenderBody()
+</body>
+</html>	

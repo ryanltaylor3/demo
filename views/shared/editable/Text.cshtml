@@ -1,0 +1,15 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime
+@{	
+	var text = Model;
+	if (text != null && text.Page != null)
+	{
+		string className = Model.Tag as string;
+		if (!string.IsNullOrWhiteSpace(className)) {
+			className = "class=" + className;
+		}
+		<div class="headline" @_Helpers.RenderICEAttribute(Model)>
+	        <h2 @className >@text.Value</h2>
+        </div>
+	}
+}

@@ -1,0 +1,65 @@
+﻿@PageBuilderGridColumns: 12;
+@PageBuilderGridColumnWidth:    6.382978723%;
+@PageBuilderGridGutterWidth:    2.127659574%;
+
+@MediumGridName: large;
+@SmallGridName: medium;
+@NoWrapGridName: small;
+
+    .colWidth (@columns) {
+      width: (@PageBuilderGridColumnWidth * @columns) + (@PageBuilderGridGutterWidth * (@columns - 1));
+    }
+
+    .generate_columns_foundation (@index, @gridSize) when (@index > 0) {
+      html .pageBuilderLayout .row .@{gridSize}-@{index} { 
+		  .colWidth(@index); 
+      }
+      .generate_columns_foundation(@index - 1, @gridSize);
+    }
+
+//Before commented out area contains example of Foundation based page builder custom styles for Page Builder
+//comment it out if your runtime site uses Foundation responsive framework and would like to work with it with Page Builder
+
+/*@media (min-width: 992px) {
+
+	.generate_columns_foundation (@PageBuilderGridColumns, @MediumGridName);
+
+	html .pageBuilderLayout .row [class*="@{MediumGridName}-"] {
+		margin-left: 2.127659574468085%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+
+@media (min-width: 768px) {
+
+	.generate_columns_foundation (@PageBuilderGridColumns, @SmallGridName);
+
+	html .pageBuilderLayout .row [class*="@{SmallGridName}-"] {
+		margin-left: 2.127659574468085%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
+
+	.generate_columns_foundation (@PageBuilderGridColumns, @NoWrapGridName);
+
+	html .pageBuilderLayout .row [class*="@{NoWrapGridName}-"] {
+		margin-left: 2.127659574468085%;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+html .pageBuilderLayout .row [class*="@{MediumGridName}-"]:first-child,
+html .pageBuilderLayout .row [class*="@{SmallGridName}-"]:first-child,
+html .pageBuilderLayout .row [class*="@{NoWrapGridName}-"]:first-child {
+	margin-left: 0;
+}
+
+html .pageBuilderLayout .row-fluid {
+	width: auto;
+	margin: 3px;
+}*/

@@ -1,0 +1,19 @@
+﻿@model Ingeniux.Runtime.ICMSElement
+@using Ingeniux.Runtime
+
+@{
+	var comp = Model.Element("ContactInformation");
+}
+
+<div class="who margin-bottom-30" @_Helpers.RenderICEAttribute(Model)>
+	<div class="headline">
+		<h2>@comp.GetElementValue("Title")</h2>
+	</div>
+	<p>@comp.GetElementValue("Company")</p>
+	<ul class="list-unstyled">
+		<li><a href="#"><i class="icon-home"></i>@comp.GetElementValue("Address")</a></li>
+		<li><a href="mailto:@comp.GetElementValue("Email")"><i class="icon-envelope-alt"></i>@comp.GetElementValue("Email")</a></li>
+		<li><a href="#"><i class="icon-phone-sign"></i>@comp.GetElementValue("Phone")</a></li>
+		<li><a href="@comp.GetElementValue("Web")"><i class="icon-globe"></i>@comp.GetElementValue("Web")</a></li>
+	</ul>
+</div>
